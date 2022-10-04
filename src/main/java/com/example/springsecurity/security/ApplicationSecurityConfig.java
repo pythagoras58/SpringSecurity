@@ -45,6 +45,12 @@ public class ApplicationSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .roles("STUDENT") // ROLE_STUDENT
                 .build();
 
-        return new InMemoryUserDetailsManager(pythagoras);
+        UserDetails linda = User.builder()
+                .username("linda")
+                .password(passwordEncoder.encode("linda"))
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(pythagoras, linda);
     }
 }
