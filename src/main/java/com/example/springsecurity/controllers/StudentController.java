@@ -1,16 +1,14 @@
 package com.example.springsecurity.controllers;
 
 import com.example.springsecurity.model.StudentModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http:localhost:8099")
 @RequestMapping("api/v1/students")
 public class StudentController {
 
@@ -21,6 +19,10 @@ public class StudentController {
             new StudentModel(3, "Prince")
     );
 
+
+
+
+    @CrossOrigin("http:localhost:8099")
     @GetMapping(path = "{studentId}")
     public StudentModel getStudent(@PathVariable("studentId") Integer studentId){
         return STUDENT_MODEL_LIST.stream()

@@ -1,2 +1,11 @@
 server:
   port: 8099
+  servlet:
+    register-default-servlet: true
+    session:
+      timeout: 20m
+      cookie:
+        secure: true
+        http-only: true
+        same-site: strict
+      tracking-modes: cookie
