@@ -2,8 +2,7 @@ package com.example.springsecurity.controllers;
 
 import com.example.springsecurity.model.StudentModel;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,15 +22,18 @@ public class ManagementController {
         return STUDENT_MODEL_LIST;
     }
 
-    public void registerNewStudent(StudentModel studentModel){
+    @PostMapping
+    public void registerNewStudent(@RequestBody StudentModel studentModel){
         log.info("[STUDENT INSERTED]-->{}", studentModel);
     }
 
-    public void deleteStudent(Integer studentID){
+    @DeleteMapping(path = "{studentID}")
+    public void deleteStudent(@PathVariable("studentID") Integer studentID){
         log.info("[STUDENT DELETE]-->{}", studentID);
     }
 
-    public void updateStudent(Integer studentID, StudentModel studentModel){
+    @PutMapping(path = "{studentID}")
+    public void updateStudent(@PathVariable("studentID") Integer studentID,@RequestBody StudentModel studentModel){
         log.info("[STUDENT UPDATED]-->{} --> {}", studentID, studentModel);
     }
 }
