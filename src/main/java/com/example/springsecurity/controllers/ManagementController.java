@@ -18,6 +18,7 @@ public class ManagementController {
             new StudentModel(3, "Prince")
     );
 
+    @GetMapping("/getAll")
     public List<StudentModel> getAllStudents(){
         return STUDENT_MODEL_LIST;
     }
